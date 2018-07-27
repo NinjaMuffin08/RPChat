@@ -37,19 +37,37 @@ AddEventHandler('sendProximityMessageRoll', function(id, name, num)
   local myId = PlayerId()
   local pid = GetPlayerFromServerId(id)
   if pid == myId then
-    if num > 5 then
-    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 Succeeded!")
+    if num > 10 and num == 20 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 has Critically Succeeded!")
     end
-    if num < 5 then
-    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 Failed!")
+	
+	if num > 10 and  num ~= 20 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 has Succeeded!")
     end
+	
+    if num < 10 and num == 1 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 has Crtically Failed!")
+    end
+	
+	if num < 10 and num ~= 1 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 has Failed!")
+    end
+	
   elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
-    if num > 5 then
-    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 Succeeded!")
+     if num > 10 and num == 20 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 has Critically Succeeded!")
     end
-    if num < 5 then
-    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 Failed!")
+	
+	if num > 10 and  num ~= 20 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^2 has Succeeded!")
+    end
+	
+    if num < 10 and num == 1 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 has Crtically Failed!")
+    end
+	
+	if num < 10 and num ~= 1 then
+    TriggerEvent("chatMessage", "[ROLL]", {255,0,0}, "" .. name .. "'s Action ^1 has Failed!")
     end
   end
 end)
-
